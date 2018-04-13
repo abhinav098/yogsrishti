@@ -1,0 +1,13 @@
+%h1 Listing all YogAsanas
+-@asans.each do |asan|
+	.row.panel
+		.col
+			%h3 
+			= link_to asan.name, asana_path(asan)
+			%br
+			%br
+			= image_tag asan.image
+		.col	
+			=	asan.description
+		%br	
+		%br	

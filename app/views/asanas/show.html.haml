@@ -1,0 +1,8 @@
+%h1 
+	= @asan.name
+%p
+= image_tag(@asan.image)
+%p
+= @asan.description
+%p
+= link_to "Edit", edit_asana_path(@asan) if current_user.admin?
