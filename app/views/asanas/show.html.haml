@@ -5,4 +5,7 @@
 %p
 = @asan.description
 %p
-= link_to "Edit", edit_asana_path(@asan) if current_user.admin?
+-if current_user.admin? 
+	= link_to "Edit", edit_asana_path(@asan) 
+	|
+	= link_to "Delete", asana_path(@asan), method: :delete

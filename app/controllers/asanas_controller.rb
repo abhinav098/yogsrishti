@@ -1,11 +1,11 @@
 class AsanasController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_asan, only: [:edit, :update, :show, :destroy]
-	
+
 	def index
 		@asans = Asana.order(:name)
 	end
-	
+
 	def new
 		@asan = Asana.new
 	end
@@ -36,6 +36,10 @@ class AsanasController < ApplicationController
 			flash[:error] = "You are not authorised to perform this action."
 		end
 	end
+
+  def search
+		@asanas_searched = Asana.search(params[:search])
+  end
 
 	def destroy
 		if current_user.admin?

@@ -1,0 +1,14 @@
+.block
+  .secondary-navigation
+  .content
+    - if params[:search].blank? || @asanas_searched.blank?
+      #search_error
+        Sorry no matching results for keyword '#{params[:search]}'
+    - else
+      %h2.title
+        All articles containing keyword '#{params[:search]}'
+        - @asanas_searched.each do |asana|
+          %tr{class: cycle("odd", "even")}
+            - if asana.user
+              %td= image_tag (asana.image)
+              %td= asana_path(asana)

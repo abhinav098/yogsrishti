@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  
+
   root 'static_pages#home'
-  resources :asanas
-  
+  resources :asanas do
+    collection do
+      get :search
+    end
+  end
+
   devise_for :users
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
