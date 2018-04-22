@@ -20,10 +20,11 @@
               %a{:href => "/asanas"} Asanas
             %li
               =link_to "New", new_asana_path if current_user&.admin? && user_signed_in?
-      %form.navbar-form.navbar-left
-        = form_tag '/asanas/search', method: :get, class: :form do
-          = text_field_tag :search, params[:search], autocomplete: "off", class: 'text_field'
-          = submit_tag "Search"
+        %ul.nav.navbar-nav
+          %li
+            = form_tag search_asanas_path, :method => :get do
+              = text_field_tag :search, params[:search]
+              = submit_tag "Search"      
       %ul.nav.navbar-nav.navbar-right
         %li
           %a{:href => "/about"} About

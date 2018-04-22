@@ -7,8 +7,8 @@
     - else
       %h2.title
         All articles containing keyword '#{params[:search]}'
-        - @asanas_searched.each do |asana|
-          %tr{class: cycle("odd", "even")}
-            - if asana.user
-              %td= image_tag (asana.image)
-              %td= asana_path(asana)
+      %br
+      - @asanas_searched.each do |asana|
+        %p
+          = link_to asana.name, asana_path(asana)
+        =image_tag(asana.image)

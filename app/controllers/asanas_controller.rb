@@ -3,7 +3,14 @@ class AsanasController < ApplicationController
 	before_action :set_asan, only: [:edit, :update, :show, :destroy]
 
 	def index
-		@asans = Asana.order(:name)
+		if params[:search]
+			search = Sunspot.search(Asana) do 
+									fulltext params[:search]
+								end
+			@asans = search.results
+		else	
+			@asans = Asana.order(:name)
+		end
 	end
 
 	def new
@@ -24,6 +31,13 @@ class AsanasController < ApplicationController
 		end
 	end
 
+	def search
+		search = Sunspot.search(Asana) do 
+									fulltext params[:search]
+								end
+		@asanas_searched = search.results
+	end
+
 	def update
 		if current_user.admin?
 			if @asan.update(asan_params)
@@ -36,10 +50,6 @@ class AsanasController < ApplicationController
 			flash[:error] = "You are not authorised to perform this action."
 		end
 	end
-
-  def search
-		@asanas_searched = Asana.search(params[:search])
-  end
 
 	def destroy
 		if current_user.admin?

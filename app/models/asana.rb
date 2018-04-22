@@ -4,9 +4,10 @@ class Asana < ApplicationRecord
 		text :name
 	end
 
-	def search(keys)
+	def xyz(keys)
 		search = Sunspot.search(Asana) do
 			fulltext keys
-		end.results
+		end
+		search.results
 	end
 end
