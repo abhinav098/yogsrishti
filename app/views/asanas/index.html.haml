@@ -1,7 +1,4 @@
 %h1 All Yog Asanas
-= form_tag asanas_path, :method => :get do
-	= text_field_tag :search, params[:search]
-	= submit_tag "Search"
 -@asans.each do |asan|
 	.row.panel
 		.col
@@ -10,7 +7,5 @@
 			%br
 			%br
 			= image_tag asan.image
-		.col	
-			=	asan.description
-		%br	
+		%br
 		%br

@@ -20,11 +20,6 @@
               %a{:href => "/asanas"} Asanas
             %li
               =link_to "New", new_asana_path if current_user&.admin? && user_signed_in?
-        %ul.nav.navbar-nav
-          %li
-            = form_tag search_asanas_path, :method => :get do
-              = text_field_tag :search, params[:search]
-              = submit_tag "Search"      
       %ul.nav.navbar-nav.navbar-right
         %li
           %a{:href => "/about"} About
@@ -33,7 +28,7 @@
         - if user_signed_in?
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              Account
+              = current_user.name
               %span.caret
             %ul.dropdown-menu
               %li= link_to "Profile", edit_user_registration_path

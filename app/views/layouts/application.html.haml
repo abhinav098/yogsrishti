@@ -12,5 +12,9 @@
       .content
         .container
         -flash_messages
+        .search_form{align: 'right'}
+          =render 'layouts/search' unless controller_name.eql?('sessions') || controller_name.eql?('registrations')
         = yield
+        %br
+        %br
 

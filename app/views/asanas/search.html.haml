@@ -3,7 +3,18 @@
   .content
     - if params[:search].blank? || @asanas_searched.blank?
       #search_error
-        Sorry no matching results for keyword '#{params[:search]}'
+        %h2
+          Sorry no matching results for keyword '#{params[:search]}'
+        %br
+        %br
+        %br
+        - @asanas_searched = Asana.all
+        - @asanas_searched.each do |asana|
+          %p
+            = link_to asana.name, asana_path(asana)
+          =image_tag(asana.image)
+          %br
+          %br
     - else
       %h2.title
         All articles containing keyword '#{params[:search]}'
@@ -12,3 +23,5 @@
         %p
           = link_to asana.name, asana_path(asana)
         =image_tag(asana.image)
+        %br
+        %hr

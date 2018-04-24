@@ -1,16 +1,10 @@
 class AsanasController < ApplicationController
+	include AsanaActivities
 	before_action :authenticate_user!
 	before_action :set_asan, only: [:edit, :update, :show, :destroy]
 
 	def index
-		if params[:search]
-			search = Sunspot.search(Asana) do 
-									fulltext params[:search]
-								end
-			@asans = search.results
-		else	
-			@asans = Asana.order(:name)
-		end
+		@asans = Asana.order(:name)
 	end
 
 	def new
@@ -32,10 +26,7 @@ class AsanasController < ApplicationController
 	end
 
 	def search
-		search = Sunspot.search(Asana) do 
-									fulltext params[:search]
-								end
-		@asanas_searched = search.results
+		@asanas_searched = search_asana
 	end
 
 	def update

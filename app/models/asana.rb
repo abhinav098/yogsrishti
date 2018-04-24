@@ -3,11 +3,4 @@ class Asana < ApplicationRecord
 	searchable do
 		text :name
 	end
-
-	def xyz(keys)
-		search = Sunspot.search(Asana) do
-			fulltext keys
-		end
-		search.results
-	end
 end
