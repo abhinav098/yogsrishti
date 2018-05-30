@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :xyzs
   root 'static_pages#home'
   resources :asanas do
     collection do
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
+  put '/xyzs', to: 'xyzs#qwert'
   devise_for :users
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'

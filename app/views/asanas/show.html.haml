@@ -1,9 +1,9 @@
 %h1 
-	= @asan.name
+	= best_in_place @asan, :name
 %p
-= image_tag(@asan.image)
+	= image_tag(@asan.image)
 %p
-= @asan.description
+	= best_in_place @asan, :description, as: :textarea
 %p
 -if current_user.admin? 
 	= link_to "Edit", edit_asana_path(@asan) 

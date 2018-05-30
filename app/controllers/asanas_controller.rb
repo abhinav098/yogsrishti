@@ -6,7 +6,7 @@ class AsanasController < ApplicationController
 	def index
 		@asans = Asana.order(:name)
 	end
-
+	
 	def new
 		@asan = Asana.new
 	end

@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 ruby '2.5.0'
+
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'rails', '~> 5.1.5'
@@ -17,9 +18,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sunspot_rails'
 gem 'progress_bar'
 gem 'haml'
+gem 'best_in_place'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
